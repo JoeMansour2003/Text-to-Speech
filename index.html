@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- https://codepen.io/aaronvanston/pen/yNYOXR https://colorlib.com/wp/bootstrap-file-uploads/  -->
+        <!-- https://www.youtube.com/watch?v=RPniKssfFTU -->
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            rel="stylesheet"
+            href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
+            integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk"
+            crossorigin="anonymous"
+        />
+        <link rel="stylesheet" href="style.css" />
+        <title>Upload File</title>
+    </head>
+    <body>
+        <div class="container">
+            <input
+                type="file"
+                class="upload_hide"
+                id="upload_costum"
+                multiple
+            />
+            <label for="upload_costum" class="upload_label">
+                <div class="image">
+                    <img src="" alt="" />
+                </div>
+                <i class="fas fa-cloud-upload-alt"></i>
+                <p class="drag_text">Drag & Drop to Upload File</p>
+                <button class="choose_file">Choose a File</button>
+                <p>Please drag and drop the file you wish to be converted</p>
+            </label>
+            <button class="delete_file">Delete File</button>
+        </div>
+
+        <script
+            src="https://code.jquery.com/jquery-3.6.0.js"
+            integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+            crossorigin="anonymous"
+        ></script>
+        <script>
+            $(".delete_file").hide();
+            $("#upload_costum").change(function (event) {
+                let tmppath = URL.createObjectURL(event.target.files[0]);
+                $(".image > img").fadeIn("fast").attr("src", tmppath);
+                $(".delete_file").show();
+                $(".choose_file").hide();
+
+                $(".delete_file").click(function () {
+                    $(".image > img").fadeIn("fast").attr("src", "");
+                    $(".delete_file").hide();
+                });
+            });
+        </script>
+    </body>
+</html>
