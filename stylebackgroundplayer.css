@@ -1,0 +1,19 @@
+html,
+body {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  background: #150d35;
+  padding: 0;
+  margin: 0;
+}
+
+svg path {
+  stroke: none;
+}
+
+svg line {
+  /*   stroke: white;
+  stroke-width: 3;
+  opacity:0.3; */
+}
