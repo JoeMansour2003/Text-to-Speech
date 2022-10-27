@@ -1,0 +1,22 @@
+{
+  "name": "text-to-speech",
+  "version": "1.0.0",
+  "description": "MS-API",
+  "main": "stylebackgroundplayer.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JoeMansour2003/Text-to-Speech.git"
+  },
+  "author": "Joseph Mansour",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JoeMansour2003/Text-to-Speech/issues"
+  },
+  "homepage": "https://github.com/JoeMansour2003/Text-to-Speech#readme",
+  "dependencies": {
+    "microsoft-cognitiveservices-speech-sdk": "^1.24.0"
+  }
+}
