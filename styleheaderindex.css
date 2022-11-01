@@ -8,11 +8,11 @@ html {
  }
  
  a {
-     color: #111;
+     color: rgb(0, 0, 0);
  }
  
  a:hover {
-     color: #111;
+     color: rgb(0, 0, 0);
  }
  
  pre {
@@ -31,10 +31,7 @@ html {
     width: 100%;
     border-radius: 0.2rem;
  }
- 
- .dots {
-     background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAEklEQVQImWNgYGD4z0AswK4SAFXuAf8EPy+xAAAAAElFTkSuQmCC") repeat;
- }
+
  
  #original-doge {
     max-width: 10vw;
@@ -60,7 +57,6 @@ html {
  main {
      min-height: 100vh;
      padding: 5rem 0;
-     background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAICAYAAADA+m62AAAAJElEQVQYlWNgwAT/sYjhVIRXMbokVsW4TPhPjCJi5clXTBwAAOy+CfekNMf3AAAAAElFTkSuQmCC") repeat;
  }
  
  main [class*='col-'] {
