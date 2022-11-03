@@ -18,12 +18,12 @@
     <link href="stylebackgroundcontactus.css" rel="stylesheet">
     <title>Text à Audio - Contactez-Nous</title>
 </head>
-<body>
-<header>
+<div class="header">
+  <header>
     <div class="container">
-      <div class="row">
+<div class="row">
         <div class="col mr-auto">
-            <a href="homefr.html" class="header-logo col">Accueil</a>
+          <a href="homefr.html" class="header-logo col">Accueil</a>
         </div>
         <nav class="header-menu">
           <ul>
@@ -36,11 +36,13 @@
       </div>
     </div>
   </header>
-<main>
-  <section class="contact-form">
-    <div class="container">
-      <div class="row d-flex justify-content-between">
-        <div class="col-md-3 mx-auto">
+
+  <!--Content before waves-->
+  <div class="inner-header flex">
+    <section class="contact-form">
+      <div class="container">
+        <div class="row d-flex justify-content-between">
+          <div class="col-md-3 mx-auto">
           <h2>Contactez-Nous</h2>
           <label for="name">Nom et Prénom</label>
           <input type="text" id="name" maxlength="10" size="40">
@@ -50,11 +52,30 @@
           <input type="text" id="subject" maxlength="30" size="40">
           <label for="message">Message</label>
           <textarea id="message" rows="5" cols="30"></textarea>
-          <button type="submit" class="btn">Envoyer</button>
+          <button type="submit" class="btn">Send</button>
         </div>
       </div>
     </div>
   </section>
+</div>
+    
+    <!--Waves Container-->
+    <div>
+    <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+    viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+    <defs>
+    <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+    </defs>
+    <g class="parallax">
+    <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7" />
+    <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)" />
+    <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)" />
+    <use xlink:href="#gentle-wave" x="48" y="7" fill="#fff" />
+    </g>
+    </svg>
+    </div>
+    </div>
+</div>
 </main>
 </body>
 </html>
