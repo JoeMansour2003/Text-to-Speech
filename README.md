@@ -9,6 +9,6 @@ Andy Gao, 300189585
 David Posala, 300243678  
 Paul Karakach, 300238050  
   
-GNG 2101
+-uAudio Studios
 
 
