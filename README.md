@@ -11,4 +11,9 @@ Paul Karakach, 300238050
   
 -uAudio Studios
 
+Needed python packages; (run this code in your terminal to install packages)
+ffmpeg; pip install ffmpeg
+pydub; pip install pydub
+PyPDF2; pip install PyPDF2
+
 
