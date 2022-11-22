@@ -218,36 +218,36 @@ animation: fadeOut 1 5s ease-in;
 }
 
 #head2{
--webkit-animation: fadeOut 1 5s ease-in;
--moz-animation: fadeOut 1 5s ease-in;
--o-animation: fadeOut 1 5s ease-in;
-animation: fadeOut 1 5s ease-in;
--webkit-animation-delay: 6s;
--moz-animation-delay: 6s;
--o-animation-delay: 6s;
-animation-delay: 6s;
+-webkit-animation: fadeOut 1 3s ease-in;
+-moz-animation: fadeOut 1 3s ease-in;
+-o-animation: fadeOut 1 3s ease-in;
+animation: fadeOut 1 3s ease-in;
+-webkit-animation-delay: 5s;
+-moz-animation-delay: 5s;
+-o-animation-delay: 5s;
+animation-delay: 5s;
 }
 
 #head3{
--webkit-animation: fadeOut 1 5s ease-in;
--moz-animation: fadeOut 1 5s ease-in;
--o-animation: fadeOut 1 5s ease-in;
-animation: fadeOut 1 5s ease-in;
--webkit-animation-delay: 12s;
--moz-animation-delay: 12s;
--o-animation-delay: 12s;
-animation-delay: 12s;
+-webkit-animation: fadeOut 1 3s ease-in;
+-moz-animation: fadeOut 1 3s ease-in;
+-o-animation: fadeOut 1 3s ease-in;
+animation: fadeOut 1 3s ease-in;
+-webkit-animation-delay: 9s;
+-moz-animation-delay: 9s;
+-o-animation-delay: 9s;
+animation-delay: 9s;
 }
 
 #head4{
--webkit-animation: fadeOut 1 5s ease-in;
--moz-animation: fadeOut 1 5s ease-in;
--o-animation: fadeOut 1 5s ease-in;
-animation: fadeOut 1 5s ease-in;
--webkit-animation-delay: 17s;
--moz-animation-delay: 17s;
--o-animation-delay: 17s;
-animation-delay: 17s;
+-webkit-animation: fadeOut 1 3s ease-in;
+-moz-animation: fadeOut 1 3s ease-in;
+-o-animation: fadeOut 1 3s ease-in;
+animation: fadeOut 1 3s ease-in;
+-webkit-animation-delay: 13s;
+-moz-animation-delay: 13s;
+-o-animation-delay: 13s;
+animation-delay: 13s;
 }
 
 #head5{
@@ -259,10 +259,10 @@ animation: finalFade 1 5s ease-in;
 -moz-animation-fill-mode: forwards;
 -o-animation-fill-mode: forwards;
 animation-fill-mode: forwards;
--webkit-animation-delay: 22s;
--moz-animation-delay: 22s;
--o-animation-delay: 22s;
-animation-delay: 22s;
+-webkit-animation-delay: 17s;
+-moz-animation-delay: 17s;
+-o-animation-delay: 17s;
+animation-delay: 17s;
 }
 
 @-webkit-keyframes fadeIn{
