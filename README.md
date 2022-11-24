@@ -1,5 +1,5 @@
 # Text-to-Speech
-PDF, Epub, Word to Audio (Mp3, wav) converter.  
+PDF, Epub, Word to Audio (Mp3, wav) converter  
 This is being created for the University of Ottawa to allow students to upload their textbooks or other text documents and receive an audio file to be able to listen to their textbooks, making learning more convenient in this day and age.  
   
 Created by:  
