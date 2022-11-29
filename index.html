@@ -84,5 +84,58 @@
                 });
             });
         </script>
+
+            <button type="button" id="btnUpload">Upload</button>
+            <br>
+            <br>
+            <textarea style="width: 300px; height: 150px;" id="resultText" placeholder="Your PDF text will appear here..."></textarea>
+
+        <script>
+            const upload_costum = document.getElementById("upload_costum");
+            const btnUpload = document.getElementById("btnUpload");
+            const resultText = document.getElementById("resultText");
+
+            btnUpload.addEventListener("click", () => {
+                const formData = new FormData();
+
+                formData.append("pdfFile", upload_costum.files[0]);
+
+                fetch("/extract-text", {
+                    method: "post",
+                    body: formData
+                }).then(response => {
+                    return response.text();
+                }).then(extractedText => {
+                    resultText.value = extractedText.trim();
+                });
+            });
+        </script>
+
+            <br>
+
+            <input type="button" id="dwn-btn" value="Download dynamically generated text file"/>
+            
+            <script>
+                function download(filename, text) {
+                var element = document.createElement('a');
+                element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+                element.setAttribute('download', filename);
+
+                element.style.display = 'none';
+                document.body.appendChild(element);
+
+                element.click();
+
+                document.body.removeChild(element);
+            }
+
+            // Start file download.
+            document.getElementById("dwn-btn").addEventListener("click", function(){
+                // Generate download of hello.txt file with some content
+                var filename = "pdf.txt";
+                download(filename, resultText.value);
+            }, false);
+            </script>
+
     </body>
 </html>

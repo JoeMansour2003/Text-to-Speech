@@ -4,7 +4,7 @@ const pdfParse = require("pdf-parse");
 
 const app = express();
 // test
-app.use("/", express.static("public"));
+app.use("/", express.static("index.html"));
 app.use(fileUpload());
 
 app.post("/extract-text", (req, res) => {
