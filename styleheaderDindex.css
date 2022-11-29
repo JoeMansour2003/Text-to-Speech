@@ -1,0 +1,68 @@
+
+html {
+    font-size: 150%;
+ }
+ 
+ body {
+     overflow-x: hidden;
+ }
+ 
+ a {
+     color: rgb(0, 0, 0);
+ }
+ 
+ a:hover {
+     color: rgb(255, 0, 0);
+ }
+ 
+ pre {
+     margin-bottom: 0;
+ }
+ 
+ figure {
+    margin: 0;
+    padding: 0;
+ }
+ .resize {
+   max-width:50%;
+   max-height:50%;
+ }
+ figure > img {
+    width: 100%;
+    border-radius: 0.2rem;
+ }
+
+ 
+ #original-doge {
+    max-width: 10vw;
+ }
+ header,
+ footer {
+     display: flex;
+     flex-wrap: wrap;
+     justify-content: center;
+     padding-top: 1rem;
+ }
+ 
+ nav ul {
+     padding: 0;
+     list-style-type: none;
+ }
+ 
+ nav ul > li {
+     display: inline-block;
+     padding: 0 2rem;
+ }
+ 
+ main {
+     min-height: 100vh;
+     padding: 5rem 0;
+ }
+ 
+ main [class*='col-'] {
+     margin: 3rem;
+ }
+ 
+ footer {
+     padding-bottom: 0.5rem;
+ }
