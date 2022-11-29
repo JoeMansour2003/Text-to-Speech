@@ -14,28 +14,27 @@
     <link rel="stylesheet" href="styleuploadindex.css">
     <link rel="stylesheet" href="stylebackgroundindex.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/css/bootstrap.min.css'>-->
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css'> 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-    <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
     <link href="styleheaderindex.css" rel="stylesheet">
-    <title>Text to Audio - File Upload</title>
+    <link href="stylemenuindex.css" rel="stylesheet">
+    <title>Text to Audio - Index</title>
 </head>
 <body>
 <header>
     <div class="container">
       <div class="row">
         <div class="col mr-auto">
-          <a href="home.html" class="header-logo col">Home</a>
+          <a href="home.html" class="header-logo col">Accueil</a>
         </div>
         <nav class="header-menu">
           <ul>
             <li><a href="homefr.html">Français</a></li>
             <li><a href="https://mp3.to/player/?lang=en" target="_blank">Listen Here!</a></li> 
-            <li><a href="help.html">Need Help?</a></li>
-            <li><a href="contactus.html">Contact Us</a></li>
+            <li><a href="help.html">Need Help?</a></li> 
+            <li><a href="contactus.html">Contact Us</a></li> 
           </ul>
         </nav>
       </div>
@@ -53,73 +52,18 @@
                     <img src="" alt="" />
                 </div>
                 <i class="fas fa-cloud-upload-alt"></i>
-                <p class="drag_text">Drag & Drop to Upload File</p>
-                <button class="choose_file">Choose a File</button>
+                <p class="drag_text">Slide and drop your file here</p>
+                <button class="choose_file">Choose a PDF file</button>
                 <p>Please drag and drop the file you wish to be converted</p>
             </label>
-            <button class="delete_file">Delete File</button>
+            <button class="delete_file">Delete the file</button>
         </div>
-        <html>
-
-<input type="text" id="inputText" value="Some text...">
-
-
-<button onclick="convertText()">Start</button>
-
-<p id="AudioFile"></p>
-
-<script>
-function convertText() {
-    // var x = document.getElementById("inputText").value;
-  var x = document.getElementById("inputText").value;
-  var readline = require("readline");
-
-// MS Convertion
-var sdk = require("microsoft-cognitiveservices-speech-sdk");
-var readline = document.getElementById("inputText").value;
-
-var audioFile = "YourAudioFile1.wav";
-// This example requires environment variables named "SPEECH_KEY" and "SPEECH_REGION"
-const speechConfig = sdk.SpeechConfig.fromSubscription("b974c7e81115411aa5076a392dad3380","eastus");
-const audioConfig = sdk.AudioConfig.fromAudioFileOutput(audioFile);
-
-// The language of the voice that speaks.
-speechConfig.speechSynthesisVoiceName = "en-US-JennyNeural"; // TODO adddropdown menu
-
-// Create the speech synthesizer.
-var synthesizer = new sdk.SpeechSynthesizer(speechConfig, audioConfig);
-
-var rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout
-});
-
-rl.question("Enter some text that you want to speak >\n> ", function (x) {
-  rl.close();
-  // Start the synthesizer and wait for a result.
-  synthesizer.speakTextAsync(x,
-      function (result) {
-    if (result.reason === sdk.ResultReason.SynthesizingAudioCompleted) {
-      console.log("synthesis finished.");
-    } else {
-      console.error("Speech synthesis canceled, " + result.errorDetails +
-          "\nDid you set the speech resource key and region values?");
-    }
-    synthesizer.close();
-    synthesizer = null;
-  },
-      function (err) {
-    console.trace("err - " + err);
-    synthesizer.close();
-    synthesizer = null;
-  });
-  console.log("Now synthesizing to: " + audioFile);
-});
-}
-</script>
-
-</body>
-</html>
+        <div class="vertical-menu">
+            <a href="https://cloudconvert.com/epub-to-pdf">.EPub?</a>
+            <a href="https://cloudconvert.com/txt-to-pdf">.TXT?</a>
+            <a href="https://cloudconvert.com/docx-to-pdf">.Docx?</a>
+            <a href="https://cloudconvert.com/mobi-to-pdf">.Mobi?</a>
+          </div>
 
         <script
             src="https://code.jquery.com/jquery-3.6.0.js"
