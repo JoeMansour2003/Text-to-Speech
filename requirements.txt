@@ -1,2 +1,0 @@
-html2text==2020.1.16 
-# to install, run: pip install -r requirements.txt
