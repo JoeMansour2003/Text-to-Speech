@@ -95,3 +95,20 @@ body {
   left: 10%;
   top: 0;
 }
+
+#btnUpload {
+  width: 200px;
+  height: 50px;
+  border: none;
+  background-color: #139CFF;
+  color: #fff;
+  border-radius: 3px;
+  margin: 30px auto;
+  pointer-events: none;
+  float: right;
+  
+}
+
+#btnUpload button:hover {
+  color: rgb(255, 0, 0);
+}
