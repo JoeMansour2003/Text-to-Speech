@@ -15,6 +15,7 @@ app.post("/extract-text", (req, res) => {
 
     pdfParse(req.files.pdfFile).then(result => {
         res.send(result.text);
+        //here result.text= data
     });
 });
 
