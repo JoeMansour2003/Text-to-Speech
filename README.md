@@ -32,16 +32,16 @@ Ceci est créé pour l'Université d'Ottawa afin de permettre aux étudiants de 
 ## Instructions for use
 *in Terminal*  
 On initial start up:  
-```php 
+```bash 
 npm init -y
 ```
-```php
+```bash
 npm i express express-fileupload pdf-parse
 ```
 Before every run:
-```php
+```bash
 node index.js
 ```
 
 *open Chrome*  
-localhost:3000
+localhost:3000/home.html
