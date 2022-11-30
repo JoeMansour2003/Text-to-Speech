@@ -100,6 +100,8 @@
 
                 formData.append("pdfFile", upload_costum.files[0]);
 
+                var filename = "pdf.txt";
+
                 fetch("/extract-text", {
                     method: "post",
                     body: formData
@@ -107,16 +109,16 @@
                     return response.text();
                 }).then(extractedText => {
                     resultText.value = extractedText.trim();
+                }).then(dwnpdf => {
+                    
+                    downloadtxt = download(filename, resultText.value);
+                
                 });
-            });
-        </script>
-
-            <br>
-
-            <input type="button" id="dwn-btn" value="Download dynamically generated text file"/>
             
-            <script>
-                function download(filename, text) {
+                
+            });
+
+            function download(filename, text) {
                 var element = document.createElement('a');
                 element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
                 element.setAttribute('download', filename);
@@ -127,6 +129,7 @@
                 element.click();
 
                 document.body.removeChild(element);
+                
             }
 
             // Start file download.
@@ -135,7 +138,18 @@
                 var filename = "pdf.txt";
                 download(filename, resultText.value);
             }, false);
-            </script>
+        </script>
+
+            <br>
+
+            <input type="button" id="dwn-btn" value="Download dynamically generated text file"/>
+
+            <embed
+            src="upload_costum"
+            type="application/pdf"
+            width="100%"
+            height="100%"
+            />
 
     </body>
 </html>
