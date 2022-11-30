@@ -69,7 +69,7 @@ body {
   position: absolute;
   top: 62%;
   left: 51%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, 50%);
   outline: none;
 }
 
