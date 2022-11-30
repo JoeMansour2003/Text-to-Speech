@@ -18,5 +18,10 @@ app.post("/extract-text", (req, res) => {
     });
 });
 
+app.get('/download', function(req, res){
+  const file = `${__dirname}/public/test.mp3`;
+  res.download(file); // Set disposition and send it.
+});
+
 
 app.listen(3000);
