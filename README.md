@@ -25,4 +25,10 @@ Paul Karakach, 300238050
   
 -Studios uAudio 
 
+*in Terminal*
+npm init -y
+npm i express express-fileupload pdf-parse
+node index.js
 
+*open Chrome*
+localhost:3000
