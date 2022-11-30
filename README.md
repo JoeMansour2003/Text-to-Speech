@@ -10,7 +10,7 @@ This is being created for the University of Ottawa to allow students to upload t
 - [Tristan Ruel](https://github.com/tristanruel), 300272156
 - [Andy Gao](https://github.com/andy2526), 300189585
 - [David Posala](https://github.com/didadida135), 300243678
-- [Paul Karakach](https://github.com/paulkarakach), 300238050
+- [Paul Karakach](https://github.com/pmkcanadian), 300238050
   
 
 
@@ -25,7 +25,7 @@ Ceci est créé pour l'Université d'Ottawa afin de permettre aux étudiants de 
 - [Tristan Ruel](https://github.com/tristanruel), 300272156
 - [Andy Gao](https://github.com/andy2526), 300189585
 - [David Posala](https://github.com/didadida135), 300243678
-- [Paul Karakach](https://github.com/paulkarakach), 300238050
+- [Paul Karakach](https://github.com/pmkcanadian), 300238050
   
   
 
