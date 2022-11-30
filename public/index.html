@@ -83,73 +83,72 @@
                     $(".delete_file").hide();
                 });
             });
+
         </script>
 
-            <button type="button" id="btnUpload">Upload</button>
-            <br>
-            <br>
-            <textarea style="width: 300px; height: 150px; float: right;" id="resultText" placeholder="The preview of your PDF text will appear here..."></textarea>
+        <button type="button" id="btnUpload">Upload</button>
+        <br>
+        <br>
+        <textarea style="width: 300px; height: 150px;" id="resultText" placeholder="Your PDF text will appear here..."></textarea>
 
         <script>
-            const upload_costum = document.getElementById("upload_costum");
-            const btnUpload = document.getElementById("btnUpload");
-            const resultText = document.getElementById("resultText");
+        const upload_costum = document.getElementById("upload_costum");
+        const btnUpload = document.getElementById("btnUpload");
+        const resultText = document.getElementById("resultText");
 
-            btnUpload.addEventListener("click", () => {
-                const formData = new FormData();
+        btnUpload.addEventListener("click", () => {
+            const formData = new FormData();
 
-                formData.append("pdfFile", upload_costum.files[0]);
+            formData.append("pdfFile", upload_costum.files[0]);
 
-                var filename = "pdf.txt";
+            var filename = "pdf.txt";
 
-                fetch("/extract-text", {
-                    method: "post",
-                    body: formData
-                }).then(response => {
-                    return response.text();
-                }).then(extractedText => {
-                    resultText.value = extractedText.trim();
-                }).then(dwnpdf => {
-                    
-                    downloadtxt = download(filename, resultText.value);
+            fetch("/extract-text", {
+                method: "post",
+                body: formData
+            }).then(response => {
+                return response.text();
+            }).then(extractedText => {
+                resultText.value = extractedText.trim();
+            }).then(dwnpdf => {
                 
-                });
+                downloadtxt = download(filename, resultText.value);
             
-                
             });
 
-            function download(filename, text) {
-                var element = document.createElement('a');
-                element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
-                element.setAttribute('download', filename);
+            
+        });
 
-                element.style.display = 'none';
-                document.body.appendChild(element);
+        function download(filename, text) {
+            var element = document.createElement('a');
+            element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+            element.setAttribute('download', filename);
 
-                element.click();
+            element.style.display = 'none';
+            document.body.appendChild(element);
 
-                document.body.removeChild(element);
-                
-            }
+            element.click();
 
-            // Start file download.
-            document.getElementById("dwn-btn").addEventListener("click", function(){
-                // Generate download of hello.txt file with some content
-                var filename = "pdf.txt";
-                download(filename, resultText.value);
-            }, false);
+            document.body.removeChild(element);
+            
+        }
+
+        // Start file download.
+        document.getElementById("dwn-btn").addEventListener("click", function(){
+            // Generate download of hello.txt file with some content
+            var filename = "pdf.txt";
+            download(filename, resultText.value);
+        }, false);
         </script>
 
-            <br>
+        <br>
 
-            <input type="button" id="dwn-btn" value="Download dynamically generated text file"/>
-
-            <embed
-            src="upload_costum"
-            type="application/pdf"
-            width="100%"
-            height="100%"
-            />
+        <embed
+        src="upload_costum"
+        type="application/pdf"
+        width="100%"
+        height="100%"
+        />
 
     </body>
 </html>
