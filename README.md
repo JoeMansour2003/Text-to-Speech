@@ -1,5 +1,5 @@
 # Text-to-Speech
-{Version française à suivre}
+{Version française à suivre}  
 PDF, Epub, Word and Mobi to Audio (Mp3) converter.  
 This is being created for the University of Ottawa to allow students to upload their textbooks or other text documents and receive an audio file to be able to listen to their textbooks, making learning more convenient in this day and age.  
   
@@ -27,7 +27,7 @@ Ceci est créé pour l'Université d'Ottawa afin de permettre aux étudiants de 
 
 
 ## Instructions for use
-*in Terminal*
+*in Terminal*  
 ```bash 
 npm init -y
 ```
@@ -38,5 +38,5 @@ npm i express express-fileupload pdf-parse
 node index.js
 ```
 
-*open Chrome*
+*open Chrome*  
 localhost:3000
