@@ -31,13 +31,15 @@ Ceci est créé pour l'Université d'Ottawa afin de permettre aux étudiants de 
 
 ## Instructions for use
 *in Terminal*  
-```bash 
+On initial start up:  
+```php 
 npm init -y
 ```
-```bash
+```php
 npm i express express-fileupload pdf-parse
 ```
-```bash
+Before every run:
+```php
 node index.js
 ```
 
