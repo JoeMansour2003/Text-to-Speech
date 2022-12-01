@@ -15,7 +15,13 @@ app.post("/extract-text", (req, res) => {
 
     pdfParse(req.files.pdfFile).then(result => {
         res.send(result.text);
+        //here result.text= data
     });
+});
+
+app.get('/download', function(req, res){
+  const file = `${__dirname}/public/test.mp3`;
+  res.download(file); // Set disposition and send it.
 });
 
 
