@@ -39,8 +39,14 @@ npm init -y
 npm i express express-fileupload pdf-parse
 ```
 Before every run:
+In \Text-to-Speech>
 ```bash
 node index.js
+```
+
+In \Text-to-Speech\public>
+```bash
+node.exe SpeechSynthesis.js
 ```
 
 *open Chrome*  
