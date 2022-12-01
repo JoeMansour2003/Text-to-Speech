@@ -5,7 +5,7 @@
     var sdk = require("microsoft-cognitiveservices-speech-sdk");
     var readline = require("readline");
 
-    var audioFile = "YourAudioFile.wav";
+    var audioFile = "YourAudioFile.mp3";
     // This example requires environment variables named "SPEECH_KEY" and "SPEECH_REGION"
     const speechConfig = sdk.SpeechConfig.fromSubscription("b974c7e81115411aa5076a392dad3380","eastus");
     const audioConfig = sdk.AudioConfig.fromAudioFileOutput(audioFile);
