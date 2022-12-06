@@ -141,15 +141,278 @@
             download(filename, resultText.value);
         }, false);
         </script>
+    <body>
+        <textarea
+            id="phraseDiv"
+            style="
+                display: inline-block;
+                width: 500px;
+                height: 50px;
+            "
+            maxlength="255"
+            onblur="updateSrc()"
+        >
+</textarea
+        >
+    </td>
+</tr>
+<tr>
+    <td align="right">Select Voice Sound</td>
+    <td>
+        <select id="voiceName" onblur="updateSrc()">
+            <option value="" selected>Default</option>
+            <option value="zh-HK-HiuGaaiNeural">
+                Chinese (Neural, Female, Cantonese 1,
+                Traditional)
+            </option>
+            <option value="zh-HK-HiuMaanNeural">
+                Chinese (Neural, Female, Cantonese 2,
+                Traditional)
+            </option>
+            <option value="zh-HK-HiuMaanNeural">
+                Chinese (Neural, Female, Cantonese 3,
+                Traditional)
+            </option>
+            <option value="zh-HK-WanLungNeural">
+                Chinese (Neural, Male, Cantonese 4, Traditional)
+            </option>
+            <option value="zh-CN-XiaoxiaoNeural">
+                Chinese (Neural, Female, Mandarin 1, Simplified)
+            </option>
+            <option value="zh-CN-XiaoyouNeural">
+                Chinese (Neural, Female, Mandarin 2, Simplified)
+            </option>
+            <option value="zh-CN-XiaomoNeural">
+                Chinese (Neural, Female, Mandarin 3, Simplified)
+            </option>
+            <option value="zh-CN-XiaoxuanNeural">
+                Chinese (Neural, Female, Mandarin 4, Simplified)
+            </option>
+            <option value="zh-CN-XiaohanNeural">
+                Chinese (Neural, Female, Mandarin 5, Simplified)
+            </option>
+            <option value="zh-CN-XiaoruiNeural">
+                Chinese (Neural, Female, Mandarin 6, Simplified)
+            </option>
+            <option value="zh-CN-YunyangNeural">
+                Chinese (Neural, Male, Mandarin 7, Simplified)
+            </option>
+            <option value="zh-CN-YunyeNeural">
+                Chinese (Neural, Male, Mandarin 8, Simplified)
+            </option>
+            <option value="zh-CN-YunxiNeural">
+                Chinese (Neural, Male, Mandarin 9, Simplified)
+            </option>
+            <option value="zh-TW-HsiaoChenNeural">
+                Chinese (Neural, Female, Taiwanese 1, Mandarin)
+            </option>
+            <option value="zh-TW-HsiaoYuNeural">
+                Chinese (Neural, Female, Taiwanese 2, Mandarin)
+            </option>
+            <option value="zh-TW-YunJheNeural">
+                Chinese (Neural, Male, Taiwanese 3, Mandarin)
+            </option>
+            <option value="en-HK-YanNeural">
+                English (Neural, Female, English 1, Hong Kong)
+            </option>
+            <option value="en-HK-SamNeural">
+                English (Neural, Male, English 2, Hong Kong)
+            </option>
+            <option value="en-SG-LunaNeural">
+                English (Neural, Female, English 3, Singapore)
+            </option>
+            <option value="en-SG-WayneNeural">
+                English (Neural, Male, English 4, Singapore)
+            </option>
+            <option value="en-GB-LibbyNeural">
+                English (Neural, Female, English 5, United
+                Kingdom)
+            </option>
+            <option value="en-GB-MiaNeural">
+                English (Neural, Female, English 6, United
+                Kingdom)
+            </option>
+            <option value="en-GB-RyanNeural">
+                English (Neural, Male, English 7, United
+                Kingdom)
+            </option>
+            <option value="en-US-AriaNeural">
+                English (Neural, Female, English 8, United
+                States)
+            </option>
+            <option value="en-US-JennyNeural">
+                English (Neural, Female, English 9, United
+                States)
+            </option>
+            <option value="en-US-GuyNeural">
+                English (Neural, Male, English 10, United
+                States)
+            </option>
+            <option value="en-PH-RosaNeural">
+                English (Neural, Female, English 11,
+                Philippines)
+            </option>
+            <option value="en-PH-JamesNeural">
+                English (Neural, Male, English 12, Philippines)
+            </option>
+        </select>
+    </td>
+</tr>
+<tr>
+    <td align="right">
+        Stream Audio
+    </td>
+    <td>
+        <div>
+            <button
+                id="clientAudioAzure"
+                onclick="getSpeechFromAzure()"
+            >
+                Listen Now
+            </button>
+        </div>
+    </td>
+</tr>
 
-        <br>
-<!--
-        <embed
-        src=
-        type="application/pdf"
-        width="50%"
-        height="50%"
-        />
--->
-    </body>
+<tr>
+    <td align="right">Stream Audio</td>
+    <td>
+        <audio
+            id="serverAudioFile"
+            controls
+            preload="none"
+            onerror="DisplayError()"
+        ></audio>
+    </td>
+</tr>
+</table>
+</div>
+
+<!-- Speech SDK reference sdk. -->
+<script src="https://cdn.jsdelivr.net/npm/microsoft-cognitiveservices-speech-sdk@latest/distrib/browser/microsoft.cognitiveservices.speech.sdk.bundle-min.js"></script>
+
+<!-- Speech SDK USAGE -->
+<script>
+// status fields and start button in UI
+var phraseDiv;
+var resultDiv;
+
+// subscription key and region for speech services.
+var resourceKey = "b974c7e81115411aa5076a392dad3380";
+var resourceRegion = "eastus";
+var textLang = "en-US";
+var voiceName = "en-CA-ClaraNeural";
+var authorizationToken;
+var SpeechSDK;
+var synthesizer;
+
+var phrase = "Put text here!";
+var queryString = null;
+
+var audioType = "audio/mpeg";
+var serverSrc = "/text-to-speech";
+
+document.getElementById("serverAudioFile").disabled = true;
+document.getElementById("clientAudioAzure").disabled = true;
+
+// update src URL query string for Express.js server
+function updateSrc() {
+// input values
+voiceName = document.getElementById("voiceName").value.trim();
+phrase = document.getElementById("phraseDiv").value.trim();
+
+// server control - by file
+var serverAudioFileControl =
+    document.getElementById("serverAudioFile");
+queryString += `%file=true`;
+const fileQueryString = `file=true&region=${resourceRegion}&key=${resourceKey}&phrase=${phrase}&textLang=${textLang}&voiceName=${voiceName}`;
+serverAudioFileControl.src = `${serverSrc}?${fileQueryString}`;
+console.log(serverAudioFileControl.src);
+serverAudioFileControl.type = "audio/mpeg";
+serverAudioFileControl.disabled = false;
+
+// client control
+var clientAudioAzureControl =
+    document.getElementById("clientAudioAzure");
+clientAudioAzureControl.disabled = false;
+}
+
+function DisplayError(error) {
+window.alert(JSON.stringify(error));
+}
+
+// Client-side request directly to Azure Cognitive Services
+function getSpeechFromAzure() {
+// authorization for Speech service
+var speechConfig = SpeechSDK.SpeechConfig.fromSubscription(
+    resourceKey,
+    resourceRegion
+);
+speechConfig.speechRecognitionLanguage = textLang;
+speechConfig.speechSynthesisLanguage = textLang;
+speechConfig.speechSynthesisVoiceName = voiceName;
+
+// new Speech object
+synthesizer = new SpeechSDK.SpeechSynthesizer(speechConfig);
+
+synthesizer.speakTextAsync(
+    phrase,
+    function (result) {
+        // Success function
+
+        // display status
+        if (
+            result.reason ===
+            SpeechSDK.ResultReason.SynthesizingAudioCompleted
+        ) {
+            // load client-side audio control from Azure response
+            audioElement =
+                document.getElementById("clientAudioAzure");
+            const blob = new Blob([result.audioData], {
+                type: "audio/mpeg",
+            });
+            const url = window.URL.createObjectURL(blob);
+        } else if (
+            result.reason === SpeechSDK.ResultReason.Canceled
+        ) {
+            // display Error
+            throw result.errorDetails;
+        }
+
+        // clean up
+        synthesizer.close();
+        synthesizer = undefined;
+    },
+    function (err) {
+        // Error function
+        throw err;
+        audioElement = document.getElementById("audioControl");
+        audioElement.disabled = true;
+
+        // clean up
+        synthesizer.close();
+        synthesizer = undefined;
+    }
+);
+}
+
+// Initialization
+document.addEventListener("DOMContentLoaded", function () {
+var clientAudioAzureControl =
+    document.getElementById("clientAudioAzure");
+var resultDiv = document.getElementById("resultDiv");
+
+resourceKey = resourceKey;
+resourceRegion = resourceRegion;
+textLang = textLang;
+voiceName = document.getElementById("voiceName").value;
+phrase = document.getElementById("phraseDiv").value;
+if (!!window.SpeechSDK) {
+    SpeechSDK = window.SpeechSDK;
+    clientAudioAzure.disabled = false;
+}
+});
+</script>
+</body>
 </html>
+
