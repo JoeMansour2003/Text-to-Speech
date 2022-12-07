@@ -31,7 +31,7 @@
         </div>
         <nav class="header-menu">
           <ul>
-            <li><a href="home.html">English</a></li>
+            <li><a href="home.html">Anglais</a></li>
             <li><a href="https://mp3.to/player/?lang=fr" target="_blank">Écoutez Ici!</a></li> 
             <li><a href="helpfr.html">Besoin D'Aide?</a></li> 
             <li><a href="contactusfr.html">Contactez-Nous</a></li> 
@@ -67,89 +67,349 @@
         </div>
 
         <script
-            src="https://code.jquery.com/jquery-3.6.0.js"
-            integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
-            crossorigin="anonymous"
-        ></script>
-        <script>
-            $(".delete_file").hide();
-            $("#upload_costum").change(function (event) {
-                let tmppath = URL.createObjectURL(event.target.files[0]);
-                $(".image > img").fadeIn("fast").attr("src", tmppath);
-                $(".delete_file").show();
-                $(".choose_file").hide();
+        src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+        crossorigin="anonymous"
+    ></script>
+    <script>
+        $(".delete_file").hide();
+        $("#upload_costum").change(function (event) {
+            let tmppath = URL.createObjectURL(event.target.files[0]);
+            $(".image > img").fadeIn("fast").attr("src", tmppath);
+            $(".delete_file").show();
+            $(".choose_file").hide();
 
-                $(".delete_file").click(function () {
-                    $(".image > img").fadeIn("fast").attr("src", "");
-                    $(".delete_file").hide();
-                });
+            $(".delete_file").click(function () {
+                $(".image > img").fadeIn("fast").attr("src", "");
+                $(".delete_file").hide();
             });
+        });
+    </script>
+    <br>
+    <br>
+    <br><br>
+    <br>
+    <br><br>
+    <br>
+    <br>
+    <br>
+   <br>
+    <br><br>
 
-        </script>
+       <!-- <button type="button" id="btnUpload">Upload</button> -->
+        <br>
+        <br>
+        <textarea style="width: 300px; height: 150px; float: right;" id="resultText" placeholder="L'aperçu de votre texte PDF apparaîtra ici..."></textarea>
 
-           <!-- <button type="button" id="btnUpload">Upload</button> -->
-            <br>
-            <br>
-            <textarea style="width: 300px; height: 150px; float: right;" id="resultText" placeholder="L'aperçu de votre texte PDF apparaîtra ici..."></textarea>
+    <script>
+    const upload_costum = document.getElementById("upload_costum");
+    const btnUpload = document.getElementById("btnUpload");
+    const resultText = document.getElementById("resultText");
 
-        <script>
-        const upload_costum = document.getElementById("upload_costum");
-        const btnUpload = document.getElementById("btnUpload");
-        const resultText = document.getElementById("resultText");
+    btnUpload.addEventListener("click", () => {
+        const formData = new FormData();
 
-        btnUpload.addEventListener("click", () => {
-            const formData = new FormData();
+        formData.append("pdfFile", upload_costum.files[0]);
 
-            formData.append("pdfFile", upload_costum.files[0]);
+        var filename = "pdf.txt";
 
-            var filename = "pdf.txt";
-
-            fetch("/extract-text", {
-                method: "post",
-                body: formData
-            }).then(response => {
-                return response.text();
-            }).then(extractedText => {
-                resultText.value = extractedText.trim();
-            }).then(dwnpdf => {
-                
-                downloadtxt = download(filename, resultText.value);
+        fetch("/extract-text", {
+            method: "post",
+            body: formData
+        }).then(response => {
+            return response.text();
+        }).then(extractedText => {
+            resultText.value = extractedText.trim();
+        }).then(dwnpdf => {
             
-            });
-
-            
+            downloadtxt = download(filename, resultText.value);
+        
         });
 
-        function download(filename, text) {
-            var element = document.createElement('a');
-            element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
-            element.setAttribute('download', filename);
+        
+    });
 
-            element.style.display = 'none';
-            document.body.appendChild(element);
+    function download(filename, text) {
+        var element = document.createElement('a');
+        element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+        element.setAttribute('download', filename);
 
-            element.click();
+        element.style.display = 'none';
+        document.body.appendChild(element);
 
-            document.body.removeChild(element);
-            
-        }
+        element.click();
 
-        // Start file download.
-        document.getElementById("dwn-btn").addEventListener("click", function(){
-            // Generate download of hello.txt file with some content
-            var filename = "pdf.txt";
-            download(filename, resultText.value);
-        }, false);
-        </script>
+        document.body.removeChild(element);
+        
+    }
+    // // Start file download.
+    // document.getElementById("dwn-btn").addEventListener("click", function(){
+    //     // Generate download of hello.txt file with some content
+    //     var filename = "pdf.txt";
+    //     download(filename, resultText.value);
+    // }, false);
+    </script>
+<body>
+    <textarea
+        id="phraseDiv"
+        style="
+            display: inline-block;
+            width: 500px;
+            height: 50px;
+        "
+        maxlength="255"
+        onblur="updateSrc()"
+    >
+</textarea
+    >
+</td>
+</tr>
+<tr>
+<td align="right">Sélectionnez le son de la voix</td>
+<td>
+    <select id="voiceName" onblur="updateSrc()">
+        <option value="" selected>Défaut</option>
+        <option value="en-CA-ClaraNeural">
+            Anglais (Canada, Femelle)
+        </option>
+        <option value="en-CA-LiamNeural">
+            Anglais (Canada, Mâle)
+        </option>
+        <option value="en-US-AIGenerate2Neural">
+            Anglais (États-Unis, Femelle)
+        </option>
+        <option value="en-US-AIGenerate1Neural">
+            Anglais (États-Unis, Mâle)
+        </option>
+        <option value="fr-CA-SylvieNeural">
+            Français (Canada, Femelle)
+        </option>
+        <option value="fr-CA-AntoineNeural">
+            Français (Canada, Mâle)
+        </option>
+        <option value="fr-FR-BrigitteNeural">
+            Français (France, Femelle)
+        </option>
+        <option value="fr-FR-AlainNeural">
+            Français (France, Mâle)
+        </option>
+        <option value="zh-CN-XiaochenNeural">
+            Chinois (Mandarin, Femelle)
+        </option>
+        <option value="zh-CN-YunfengNeural">
+            Chinois (Mandarin, Mâle)
+        </option>
+        <option value="yue-CN-XiaoMinNeural">
+            Chinois (Cantonais, Femelle)
+        </option>
+        <option value="yue-CN-YunSongNeural">
+            Chinois (Cantonais, Mâle)
+        </option>
+        <option value="hi-IN-SwaraNeural">
+            Hindi (Inde, Femelle)
+        </option>
+        <option value="hi-IN-MadhurNeural">
+            Hindi (Inde, Mâle)
+        </option>
+        <option value="es-MX-BeatrizNeural">
+            Espagnol (Mexique, Femelle)
+        </option>
+        <option value="es-MX-CecilioNeural">
+            Espagnol (Mexique, Mâle)
+        </option>
+        <option value="ar-LB-LaylaNeural">
+            Arabe (Liban, Femelle)
+        </option>
+        <option value="ar-LB-RamiNeural">
+            Arabe (Liban, Mâle)
+        </option>
+        <option value="pt-BR-BrendaNeural">
+            Portugais (Brésil, Femelle)
+        </option>
+        <option value="pt-BR-AntonioNeural">
+            Portugais (Brésil, Mâle)
+        </option>
+        <option value="ru-RU-DariyaNeural">
+            Russe (Russie, Femelle)
+        </option>
+        <option value="ru-RU-DmitryNeural">
+            Russe (Russie, Mâle)
+        </option>
+        <option value="id-ID-GadisNeural">
+            Indonésien (Indonésie, Femelle)
+        </option>
+        <option value="id-ID-ArdiNeural">
+            Indonésien (Indonésie, Mâle)
+        </option>
+        <option value="ja-JP-AoiNeural">
+            Japonais (Japon, Femelle)
+        </option>
+        <option value="ja-JP-DaichiNeural">
+            Japonais (Japon, Mâle)
+        </option>
+        <option value="ta-LK-SaranyaNeural">
+            Tamil (Sri Lanka, Femelle)
+        </option>
+        <option value="ta-LK-KumarNeural">
+            Tamil (Sri Lanka, Mâle)
+        </option>
+    </select>
+</td>
+</tr>
+<tr>
+<td align="right">
+</td>
+<td>
+    <div>
+        <button
+            id="clientAudioAzure"
+            onclick="getSpeechFromAzure()"
+        >
+        Écoutez maintenant!
+        </button>
+    </div>
+</td>
+</tr>
 
-        <br>
+<tr>
+<td align="right">Diffuser l'audio</td>
+<td>
+    <audio
+        id="serverAudioFile"
+        controls
+        preload="none"
+        onerror="DisplayError()"
+    ></audio>
+</td>
+</tr>
+</table>
+</div>
 
-        <embed
-        src="upload_costum"
-        type="application/pdf"
-        width="100%"
-        height="100%"
-        />
+<!-- Speech SDK reference sdk. -->
+<script src="https://cdn.jsdelivr.net/npm/microsoft-cognitiveservices-speech-sdk@latest/distrib/browser/microsoft.cognitiveservices.speech.sdk.bundle-min.js"></script>
 
-    </body>
+<!-- Speech SDK USAGE -->
+<script>
+// status fields and start button in UI
+var phraseDiv;
+var resultDiv;
+
+// subscription key and region for speech services.
+var resourceKey = "b974c7e81115411aa5076a392dad3380";
+var resourceRegion = "eastus";
+var textLang = "en-US";
+var voiceName = "en-CA-ClaraNeural";
+var authorizationToken;
+var SpeechSDK;
+var synthesizer;
+
+var phrase = "";
+var queryString = null;
+
+var audioType = "audio/mpeg";
+var serverSrc = "/text-to-speech";
+
+document.getElementById("serverAudioFile").disabled = true;
+document.getElementById("clientAudioAzure").disabled = true;
+
+// update src URL query string for Express.js server
+function updateSrc() {
+// input values
+voiceName = document.getElementById("voiceName").value.trim();
+phrase = document.getElementById("phraseDiv").value.trim();
+
+// server control - by file
+var serverAudioFileControl =
+document.getElementById("serverAudioFile");
+queryString += `%file=true`;
+const fileQueryString = `file=true&region=${resourceRegion}&key=${resourceKey}&phrase=${phrase}&textLang=${textLang}&voiceName=${voiceName}`;
+serverAudioFileControl.src = `${serverSrc}?${fileQueryString}`;
+console.log(serverAudioFileControl.src);
+serverAudioFileControl.type = "audio/mpeg";
+serverAudioFileControl.disabled = false;
+
+// client control
+var clientAudioAzureControl =
+document.getElementById("clientAudioAzure");
+clientAudioAzureControl.disabled = false;
+}
+
+function DisplayError(error) {
+window.alert(JSON.stringify(error));
+}
+
+// Client-side request directly to Azure Cognitive Services
+function getSpeechFromAzure() {
+// authorization for Speech service
+var speechConfig = SpeechSDK.SpeechConfig.fromSubscription(
+resourceKey,
+resourceRegion
+);
+speechConfig.speechRecognitionLanguage = textLang;
+speechConfig.speechSynthesisLanguage = textLang;
+speechConfig.speechSynthesisVoiceName = voiceName;
+
+// new Speech object
+synthesizer = new SpeechSDK.SpeechSynthesizer(speechConfig);
+
+synthesizer.speakTextAsync(
+phrase,
+function (result) {
+    // Success function
+
+    // display status
+    if (
+        result.reason ===
+        SpeechSDK.ResultReason.SynthesizingAudioCompleted
+    ) {
+        // load client-side audio control from Azure response
+        audioElement =
+            document.getElementById("clientAudioAzure");
+        const blob = new Blob([result.audioData], {
+            type: "audio/mpeg",
+        });
+        const url = window.URL.createObjectURL(blob);
+    } else if (
+        result.reason === SpeechSDK.ResultReason.Canceled
+    ) {
+        // display Error
+        throw result.errorDetails;
+    }
+
+    // clean up
+    synthesizer.close();
+    synthesizer = undefined;
+},
+function (err) {
+    // Error function
+    throw err;
+    audioElement = document.getElementById("audioControl");
+    audioElement.disabled = true;
+
+    // clean up
+    synthesizer.close();
+    synthesizer = undefined;
+}
+);
+}
+
+// Initialization
+document.addEventListener("DOMContentLoaded", function () {
+var clientAudioAzureControl =
+document.getElementById("clientAudioAzure");
+var resultDiv = document.getElementById("resultDiv");
+
+resourceKey = resourceKey;
+resourceRegion = resourceRegion;
+textLang = textLang;
+voiceName = document.getElementById("voiceName").value;
+phrase = document.getElementById("phraseDiv").value;
+if (!!window.SpeechSDK) {
+SpeechSDK = window.SpeechSDK;
+clientAudioAzure.disabled = false;
+}
+});
+</script>
+</body>
 </html>
+
