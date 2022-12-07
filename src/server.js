@@ -6,12 +6,12 @@ const url = require("url");
 const fs = require("fs");
 
 // ignore request for FavIcon. so there is no error in browser
-const ignoreFavicon = (req, res, next) => {
-    if (req.originalUrl.includes("favicon.ico")) {
-        res.status(204).end();
-    }
-    next();
-};
+// const ignoreFavicon = (req, res, next) => {
+//     if (req.originalUrl.includes("favicon.ico")) {
+//         res.status(204).end();
+//     }
+//     next();
+// };
 
 // fn to create express server
 const create = async () => {
@@ -22,11 +22,11 @@ const create = async () => {
     // app.use(express.static("public", options));
 
     // configure nonFeature
-    app.use(ignoreFavicon);
+    // app.use(ignoreFavicon);
 
     // root route - serve static file
     app.get("/", (req, res) => {
-        res.sendFile(path.join(__dirname, "../public/contactus.html"));
+        res.sendFile(path.join(__dirname, "../public/client.html"));
     });
 
     // creates a temp file on server, the streams to client

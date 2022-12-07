@@ -95,7 +95,8 @@
         <br>
         <br><br>
         <br>
-        <br>
+        <br>        <br>
+        <br><br>
 
            <!-- <button type="button" id="btnUpload">Upload</button> -->
             <br>
@@ -143,13 +144,12 @@
             document.body.removeChild(element);
             
         }
-
-        // Start file download.
-        document.getElementById("dwn-btn").addEventListener("click", function(){
-            // Generate download of hello.txt file with some content
-            var filename = "pdf.txt";
-            download(filename, resultText.value);
-        }, false);
+        // // Start file download.
+        // document.getElementById("dwn-btn").addEventListener("click", function(){
+        //     // Generate download of hello.txt file with some content
+        //     var filename = "pdf.txt";
+        //     download(filename, resultText.value);
+        // }, false);
         </script>
     <body>
         <textarea
@@ -255,11 +255,11 @@
             <option value="ta-LK-KumarNeural">
                 Tamil (Sri Lanka, Male)
             </option>
+        </select>
     </td>
 </tr>
 <tr>
     <td align="right">
-        Stream Audio
     </td>
     <td>
         <div>
@@ -274,7 +274,7 @@
 </tr>
 
 <tr>
-    <td align="center">Stream Audio</td>
+    <td align="right">Stream Audio</td>
     <td>
         <audio
             id="serverAudioFile"
