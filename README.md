@@ -31,23 +31,14 @@ Ceci est créé pour l'Université d'Ottawa afin de permettre aux étudiants de 
 
 ## Instructions for use
 *in Terminal*  
-On initial start up:  
+On start up:  
 ```bash 
-npm init -y
+npm install
 ```
 ```bash
-npm i express express-fileupload pdf-parse
-```
-Before every run:
-In \Text-to-Speech>
-```bash
-node index.js
+npm start
 ```
 
-In \Text-to-Speech\public>
-```bash
-node.exe SpeechSynthesis.js
-```
 
 *open Chrome*  
 localhost:3000/home.html
