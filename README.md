@@ -43,4 +43,20 @@ npm start
 *open Chrome*  
 localhost:3000/home.html
 
-To end the local hosting, simply do ctrl+c in terminal!
+To end the local hosting, simply do CTRL + C in terminal!
+
+## Mode d'emploi
+*dans le Terminal*  
+Au démarrage:  
+```bash 
+npm install
+```
+```bash
+npm start
+```
+
+
+*ouvrir Chrome*  
+localhost:3000/home.html
+
+Pour mettre fin au serveur, faites simplement CTRL + C dans le terminal!
