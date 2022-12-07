@@ -60,3 +60,4 @@ npm start
 localhost:3000/home.html
 
 Pour mettre fin au serveur, faites simplement CTRL + C dans le terminal!
+![image](https://imgur.com/gallery/drkAKrl)
