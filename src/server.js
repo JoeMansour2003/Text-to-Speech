@@ -4,14 +4,8 @@ const { textToSpeech } = require("./azure-cognitiveservices-speech");
 const http = require("http");
 const url = require("url");
 const fs = require("fs");
-
-// ignore request for FavIcon. so there is no error in browser
-// const ignoreFavicon = (req, res, next) => {
-//     if (req.originalUrl.includes("favicon.ico")) {
-//         res.status(204).end();
-//     }
-//     next();
-// };
+const fileUpload = require("express-fileupload");
+const pdfParse = require("pdf-parse");
 
 // fn to create express server
 const create = async () => {
@@ -26,7 +20,7 @@ const create = async () => {
 
     // root route - serve static file
     app.get("/", (req, res) => {
-        res.sendFile(path.join(__dirname, "../public/client.html"));
+        res.sendFile(path.join(__dirname, "../public/home.html"));
     });
 
     // creates a temp file on server, the streams to client
@@ -59,16 +53,17 @@ const create = async () => {
         audioStream.pipe(res);
     });
 
+    app.use(fileUpload());
     app.post("/extract-text", (req, res) => {
         if (!req.files && !req.files.pdfFile) {
             res.status(400);
             res.end();
         }
-        pdfParse(req.files.pdfFile).then((result) => {
+        pdfParse(req.files.pdfFile).then(result => {
             res.send(result.text);
         });
     });
-
+    
     // Error handler
     /* eslint-disable no-unused-vars */
     app.use((err, req, res, next) => {
