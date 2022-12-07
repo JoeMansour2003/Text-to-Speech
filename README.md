@@ -42,3 +42,5 @@ npm start
 
 *open Chrome*  
 localhost:3000/home.html
+
+To end the local hosting, simply do ctrl+c in terminal!
