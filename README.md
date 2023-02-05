@@ -62,3 +62,5 @@ localhost:3000/home.html
 Pour mettre fin au serveur, faites simplement CTRL + C dans le terminal!  
 
 ![image](IMG_2302.jpg)
+
+##Thank you!
