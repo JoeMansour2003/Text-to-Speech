@@ -5,7 +5,8 @@ This is being created for the University of Ottawa to allow students to upload t
   
 -uAudio Studios
   
-## Created by:  
+## Created by:
+![image](IMG_2302.jpg)
 - [Joseph Mansour](https://github.com/joemansour2003), 300236956
 - [Tristan Ruel](https://github.com/tristanruel), 300272156
 - [David Posala](https://github.com/didadida135), 300243678
@@ -21,6 +22,7 @@ Ceci est créé pour l'Université d'Ottawa afin de permettre aux étudiants de 
 -Studios uAudio 
   
 ## Créé par:
+![image](IMG_2302.jpg)
 - [Joseph Mansour](https://github.com/joemansour2003), 300236956
 - [Tristan Ruel](https://github.com/tristanruel), 300272156
 - [David Posala](https://github.com/didadida135), 300243678
@@ -60,7 +62,5 @@ npm start
 localhost:3000/home.html
 
 Pour mettre fin au serveur, faites simplement CTRL + C dans le terminal!  
-
-![image](IMG_2302.jpg)
 
 ##Thank you!
